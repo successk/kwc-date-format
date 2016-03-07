@@ -1,0 +1,67 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../kwc-i18n/kwc-i18n.html">
+
+<dom-module id="kwc-date-format">
+  <template>[[output]]</template>
+
+  <script src="../moment/min/moment-with-locales.min.js"></script>
+  <script>
+    Polymer({
+      is: "kwc-date-format",
+
+      properties: {
+        date: {
+          type: String,
+          value: null
+        },
+
+        inputFormat: {
+          type: String,
+          value: null
+        },
+
+        format: {
+          type: String,
+          value: null
+        },
+
+        locale: {
+          type: String,
+          value: null
+        },
+
+        output: {
+          type: String,
+          reflectToAttribute: true,
+          readOnly: true,
+          computed: "_computeOutput(date, inputFormat, format, locale)"
+        }
+      },
+
+      _computeOutput: function(date, inputFormat, format, locale) {
+        var datetime;
+        if (date) {
+          if (inputFormat) {
+            datetime = moment(date, inputFormat);
+          } else {
+            datetime = moment(date);
+          }
+        } else {
+          datetime = moment();
+        }
+
+        if (locale) {
+          datetime.locale(locale);
+        } else if (window.kwc_i18n.locale) {
+          datetime.locale(window.kwc_i18n.locale);
+        }
+
+        if (format) {
+          return datetime.format(format);
+        } else {
+          return datetime.toString();
+        }
+      }
+    });
+  </script>
+</dom-module>
