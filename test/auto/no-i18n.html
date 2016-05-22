@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../../kwc-date-format.html">
+</head>
+<body>
+
+<kwc-date-format id="date1" date="2016-01-01" format="DD/MM/YYYY"></kwc-date-format>
+<kwc-date-format id="date2" date="2016-03-25" format="dddd DD MMMM YYYY" locale="fr"></kwc-date-format>
+<kwc-date-format id="date3" date="2015-12-05" format="DD/MM/YYYY"></kwc-date-format>
+<kwc-date-format id="date4" date="03/12/2015" input-format="DD/MM/YYYY"></kwc-date-format>
+<kwc-date-format id="date5" format="dddd DD MMMM YYYY HH:mm:ss"></kwc-date-format>
+
+<script>
+  suite("<kwc-date-format> no-i18n", function () {
+    test("2016-01-01 [DD/MM/YYYY]", function (done) {
+      var date = document.querySelector("#date1");
+      flush(function () {
+        assert.equal(date.output, "01/01/2016");
+        done();
+      });
+    });
+
+    test("2016-03-25 [dddd DD MMMM YYYY] fr", function (done) {
+      var date = document.querySelector("#date2");
+      flush(function () {
+        assert.equal(date.output, "vendredi 25 mars 2016");
+        done();
+      });
+    });
+
+    test("2015-12-05 [DD/MM/YYYY]", function (done) {
+      var date = document.querySelector("#date3");
+      flush(function () {
+        assert.equal(date.output, "05/12/2015");
+        done();
+      });
+    });
+
+    test("[DD/MM/YYYY] 03/12/2015", function (done) {
+      var date = document.querySelector("#date4");
+      flush(function () {
+        assert.match(date.output, /2015-12-03T00:00:00/);
+        done();
+      });
+    });
+
+    test("2016-01-01T20:30:30 [dddd DD MMMM YYYY HH:mm:ss] delayed", function (done) {
+      var date = document.querySelector("#date5");
+      flush(function () {
+        setTimeout(function () {
+          document.querySelector("#date5").date = "2016-01-01T20:30:30";
+          assert.equal(date.output, "Friday 01 January 2016 20:30:30");
+          done();
+        }, 1);
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -14,19 +14,19 @@ Or [download as ZIP](https://github.com/successk/kwc-date-format/archive/master.
 
 ## Usage
 
-1 – Import polyfill:
+### 1 – Import polyfill:
 
 ```html
 <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 ```
 
-2 – Import custom element:
+### 2 – Import custom element:
 
 ```html
 <link rel="import" href="bower_components/kwc-date-format/kwc-date-format.html">
 ```
 
-3 – Start using it!
+### 3 – Start using it!
 
 ```html
 <kwc-date-format date="2016-01-01" format="DD/MM/YYYY"></kwc-date-format>
@@ -35,78 +35,47 @@ Or [download as ZIP](https://github.com/successk/kwc-date-format/archive/master.
 <kwc-date-format date="03/12/2015" input-format="DD/MM/YYYY"></kwc-date-format>
 ```
 
-## Options
+## Documentation
 
-This component use [Moment.js](http://momentjs.com).
-All format must respect this library format.
-
-Attribute      | Options            | Default      | Description
----            | ---                | ---          | ---
-`date`         | *String*           | *now*        | The date to format
-`input-format` | *String*           | `null`       | The format of the input date
-`format`       | *String*           | `null`       | The output format
-`locale`       | *String*           | `null`       | The locale to use – See **I18n** for more information
-`output`       | *read only String* | -            | The date in wanted format – updated each time another attribute is updated
-
-## Children
-
-Selector | Description
----      | ---
-None     | -
-
-## Methods
-
-Method        | Parameters   | Returns     | Description
----           | ---          | ---         | ---
-None          | -            | -           | -
-
-## Events
-
-Event     | Detail   | Description
----       | ---      | ---
-None      | -        | -
-
-## Styles
-
-Name      | Default  | Description
----       | ---      | --
-None      | -        | -
-
-## I18n
-
-This component is base on [Moment.js](http://momentjs.com) and import all of its locales.
-This component does not provide any mean to configure translations used by this API
-but you can see its documentation for more information.
-
-This component also use [kwc-i18n](https://github.com/successk/kwc-i18n) component.
-If not set by `locale` attribute, the locale used by this component is the one configured for this component.
-See its documentation for more information.
+See [docs](./docs) for options, children selector, methods, events and styles.
 
 ## Development
 
 In order to run it locally you'll need to fetch some dependencies and a basic server setup.
 
-1 – Install [bower](http://bower.io/) & [polyserve](https://npmjs.com/polyserve):
+### 1 – Install [bower](http://bower.io/) & [gulp](http://gulpjs.com/):
 
 ```sh
-$ npm install -g bower polyserve
+$ npm install -g bower gulp
+$ npm install gulp
 ```
 
-2 – Install local dependencies:
+### 2 – Install local dependencies:
 
 ```sh
 $ bower install
+$ npm install
 ```
 
-3 – Start development server and open `http://localhost:8080/components/kwc-i18n/`.
+### 3 – Start development server and open `http://localhost:8000/components/kwc-date-format/`.
 
 ```sh
-$ polyserve
+# Run a server for test/manual files
+$ gulp manualTest
+# Run a server for demo files
+$ gulp demo
+```
+
+### 4 - build and test files
+
+```sh
+$ gulp build
+$ gulp test:local
 ```
 
 ## History
 
-For detailed changelog, check [Releases](https://github.com/successk/kwc-i18n/releases).
+For detailed changelog, check [Releases](https://github.com/successk/kwc-date-format/releases).
 
 ## License
 

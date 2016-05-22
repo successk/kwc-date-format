@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../kwc-date-format/kwc-date-format.html">
+  <style>
+    div {
+      width: 800px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><code>&lt;kwc-date-format date="2016-01-01" format="DD/MM/YYYY"&gt;</code></td>
+      <td><kwc-date-format date="2016-01-01" format="DD/MM/YYYY"></kwc-date-format></td>
+    </tr>
+    <tr>
+      <td><code>&lt;kwc-date-format date="2016-03-25" format="dddd DD MMMM YYYY" locale="fr"&gt;</code></td>
+      <td><kwc-date-format date="2016-03-25" format="dddd DD MMMM YYYY" locale="fr"></kwc-date-format></td>
+    </tr>
+    <tr>
+      <td><code>&lt;kwc-date-format date="2015-12-05" format="DD/MM/YYYY"&gt;</code></td>
+      <td><kwc-date-format date="2015-12-05" format="DD/MM/YYYY"></kwc-date-format></td>
+    </tr>
+    <tr>
+      <td><code>&lt;kwc-date-format date="03/12/2015" input-format="DD/MM/YYYY"&gt;</code></td>
+      <td><kwc-date-format date="03/12/2015" input-format="DD/MM/YYYY"></kwc-date-format></td>
+    </tr>
+    <tr>
+      <td>
+        <code>&lt;kwc-date-format format="dddd DD MMMM YYYY HH:mm:ss" id="last"&gt;</code>
+        <br>
+        After 2.5s: <code>date = 2016-01-01T20:30:30</code>
+      </td>
+      <td><kwc-date-format format="dddd DD MMMM YYYY HH:mm:ss" id="last"></kwc-date-format></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  setTimeout(function(){
+    document.querySelector("#last").date = "2016-01-01T20:30:30";
+  }, 2500)
+</script>
+</body>
+</html>

@@ -19,7 +19,8 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
-    "moment": "^2.12.0"
+    "moment": "^2.12.0",
+    "kwc-i18next": "^0.1.2"
   },
   "homepage": "https://github.com/successk/kwc-date-format",
   "authors": [
