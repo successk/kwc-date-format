@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <script src="../../i18next/i18next.min.js"></script>
+  <script>
+    i18next.init({lng: "de"});
+  </script>
+
+  <link rel="import" href="../../kwc-date-format/kwc-duration-format.html">
+  <style>
+    div {
+      width: 800px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <button class="lang" disabled>de</button>
+  <button class="lang">en</button>
+  <button class="lang">fr</button>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><code>&lt;kwc-duration-format duration="P1Y2M3DT4H5M6S"&gt;</code></td>
+      <td><kwc-duration-format duration="P1Y2M3DT4H5M6S"></kwc-date-format></td>
+    </tr>
+    <tr>
+      <td><code>&lt;kwc-duration-format duration="P2M3DT4H5M6S"&gt;</code></td>
+      <td><kwc-duration-format duration="P2M3DT4H5M6S"></kwc-date-format></td>
+    </tr>
+    <tr>
+      <td><code>&lt;kwc-duration-format duration="PT4H5M6S"&gt;</code></td>
+      <td><kwc-duration-format duration="PT4H5M6S"></kwc-date-format></td>
+    </tr>
+    <tr>
+      <td><code>&lt;kwc-duration-format duration="P3D" locale="fr"&gt;</code></td>
+      <td><kwc-duration-format duration="P3D" locale="fr"></kwc-duration-format></td>
+    </tr>
+    <tr>
+      <td>
+        <code>&lt;kwc-duration-format id="last"&gt;</code>
+        <br>
+        After 2.5s: <code>duration = PT2M53S</code>
+      </td>
+      <td><kwc-duration-format id="last"></kwc-duration-format></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  var btnLangList = Array.from(document.querySelectorAll(".lang"));
+  btnLangList.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      i18next.changeLanguage(e.target.textContent);
+      btnLangList.forEach(function (btnLang) {
+        btnLang.removeAttribute("disabled");
+      });
+      btn.setAttribute("disabled", true);
+    });
+  });
+
+  setTimeout(function(){
+    document.querySelector("#last").duration = "PT2M53S";
+  }, 2500)
+</script>
+</body>
+</html>

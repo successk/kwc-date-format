@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../bower_components/web-component-tester/browser.js"></script>
+
+  <script src="../../bower_components/i18next/i18next.min.js"></script>
+  <script>
+    i18next.init({lng: "de"});
+  </script>
+
+  <link rel="import" href="../../kwc-duration-format.html">
+</head>
+<body>
+
+<kwc-duration-format id="duration1" duration="P1Y2M3DT4H5M6S"></kwc-duration-format>
+<kwc-duration-format id="duration2" duration="P2M3DT4H5M6S" locale="fr"></kwc-duration-format>
+<kwc-duration-format id="duration3" duration="PT4H5M6S"></kwc-duration-format>
+<kwc-duration-format id="duration4"></kwc-duration-format>
+
+<script>
+  suite("<kwc-duration-format> no-i18n", function () {
+    test("P1Y2M3DT4H5M6S", function (done) {
+      var date = document.querySelector("#duration1");
+      flush(function () {
+        assert.equal(date.output, "ein Jahr");
+        done();
+      });
+    });
+
+    test("P2M3DT4H5M6S", function (done) {
+      var date = document.querySelector("#duration2");
+      flush(function () {
+        assert.equal(date.output, "2 mois");
+        done();
+      });
+    });
+
+    test("PT4H5M6S", function (done) {
+      var date = document.querySelector("#duration3");
+      flush(function () {
+        assert.equal(date.output, "4 Stunden");
+        done();
+      });
+    });
+
+    test("PT2M53S delayed", function (done) {
+      var date = document.querySelector("#duration4");
+      flush(function () {
+        setTimeout(function () {
+          date.duration = "PT2M53S";
+          assert.equal(date.output, "3 Minuten");
+          done();
+        }, 1);
+      });
+    });
+  });
+</script>
+</body>
+</html>

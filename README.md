@@ -24,6 +24,7 @@ Or [download as ZIP](https://github.com/successk/kwc-date-format/archive/master.
 
 ```html
 <link rel="import" href="bower_components/kwc-date-format/kwc-date-format.html">
+<link rel="import" href="bower_components/kwc-date-format/kwc-duration-format.html">
 ```
 
 ### 3 – Start using it!
@@ -33,6 +34,9 @@ Or [download as ZIP](https://github.com/successk/kwc-date-format/archive/master.
 <kwc-date-format date="2016-03-25" format="dddd DD MMMM YYYY" locale="fr"></kwc-date-format>
 <kwc-date-format date="2015-12-05" format="DD/MM/YYYY"></kwc-date-format>
 <kwc-date-format date="03/12/2015" input-format="DD/MM/YYYY"></kwc-date-format>
+
+<kwc-duration-format duration="PT4H"></kwc-duration-format>
+<kwc-duration-format duration="P2Y3M2D" locale="fr"></kwc-duration-format>
 ```
 
 ## Documentation
